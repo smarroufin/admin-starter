@@ -1,0 +1,22 @@
+generator kysely {
+  provider        = "prisma-kysely"
+  previewFeatures = ["prismaSchemaFolder"]
+  output          = "../../types/"
+  fileName        = "db.ts"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  createdAt DateTime @default(now())
+
+  email   String  @unique
+  hash    String
+  enabled Boolean @default(false)
+
+  @@map("_admin_users")
+}

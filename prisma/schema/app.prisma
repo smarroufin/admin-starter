@@ -1,0 +1,11 @@
+model Article {
+  id        String   @id @default(dbgenerated("gen_random_uuid()"))
+  createdAt DateTime @default(now())
+
+  author  String
+  title   String
+  content String
+  image   String
+
+  @@map("articles")
+}
