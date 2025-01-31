@@ -3,7 +3,6 @@
     <AppHeader>
       <UButton
         variant="link"
-        :padded="false"
         to="/"
         label="Blog"
       />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '#ui/types'
+import type { DropdownMenuItem } from '@nuxt/ui'
 
 const { clear, user } = useUserSession()
 
@@ -31,7 +31,6 @@ const items = computed<DropdownMenuItem[]>(() => [
       <nav class="flex items-center justify-between">
         <UButton
           variant="link"
-          :padded="false"
           to="/admin"
           label="Admin"
         />
@@ -52,13 +51,11 @@ const items = computed<DropdownMenuItem[]>(() => [
         >
           <UButton
             variant="link"
-            :padded="false"
             to="/admin/login"
             label="Login"
           />
           <UButton
             variant="link"
-            :padded="false"
             to="/admin/register"
             label="Register"
           />

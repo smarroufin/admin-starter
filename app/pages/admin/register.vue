@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { z } from 'zod'
-import type { FormSubmitEvent } from '#ui/types'
+import type { FormSubmitEvent } from '@nuxt/ui'
 
 definePageMeta({
   layout: 'admin',
@@ -77,7 +77,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <div class="flex items-center justify-end">
         <UButton
           type="submit"
-          :disabled="registering || !isFormValid"
+          :loading="registering"
+          :disabled="!isFormValid"
           color="neutral"
           class="cursor-pointer"
           label="Register"
