@@ -1,10 +1,7 @@
-import { z } from 'zod'
+import { loginSchema } from '#shared/schemas/auth'
 
 export default eventHandler(async (event) => {
-  const { email, password } = await readValidatedBody(event, z.object({
-    email: z.string().email(),
-    password: z.string().min(1),
-  }).parse)
+  const { email, password } = await readValidatedBody(event, loginSchema.parse)
 
   const user = await useDB()
     .selectFrom('_admin_users')

@@ -1,24 +1,16 @@
 <script setup lang="ts">
-import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { type ArticlePostSchema, articlePostSchema } from '#shared/schemas/articles'
 
 definePageMeta({
   layout: 'admin',
 })
 
-const schema = z.object({
-  author: z.string().min(1, 'Invalid author'),
-  title: z.string().min(1, 'Invalid title'),
-  content: z.string().min(1, 'Invalid content'),
-  image: z.string().regex(/https?:\/\/.+/, 'Invalid image url'),
-})
-type Schema = z.output<typeof schema>
-
 const { data: articles, refresh } = useFetch('/api/articles', { lazy: true, default: () => [] })
 const toast = useToast()
 const posting = ref(false)
 const deleting = ref(false)
-const state = reactive<Partial<Schema>>({
+const state = reactive<Partial<ArticlePostSchema>>({
   author: undefined,
   title: undefined,
   content: undefined,
@@ -29,7 +21,7 @@ const isFormValid = computed(() => {
   return state.author || state.title || state.content || state.image
 })
 
-async function postArticle(event: FormSubmitEvent<Schema>) {
+async function postArticle(event: FormSubmitEvent<ArticlePostSchema>) {
   if (posting.value || deleting.value || !isFormValid.value) {
     return
   }
@@ -85,7 +77,7 @@ async function deleteArticle(id: string) {
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <UCard>
       <UForm
-        :schema="schema"
+        :schema="articlePostSchema"
         :state="state"
         class="space-y-4"
         @submit="postArticle"

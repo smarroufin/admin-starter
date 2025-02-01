@@ -1,12 +1,7 @@
-import { z } from 'zod'
-
-const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{8,}$/
+import { registerSchema } from '#shared/schemas/auth'
 
 export default eventHandler(async (event) => {
-  const { email, password } = await readValidatedBody(event, z.object({
-    email: z.string().email(),
-    password: z.string().regex(PASSWORD_REGEX),
-  }).parse)
+  const { email, password } = await readValidatedBody(event, registerSchema.parse)
 
   const hash = await hashPassword(password)
 

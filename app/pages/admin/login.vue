@@ -1,28 +1,22 @@
 <script setup lang="ts">
-import { z } from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
+import { type LoginSchema, loginSchema } from '#shared/schemas/auth'
 
 definePageMeta({
   layout: 'admin',
 })
 
-const schema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string().min(1, 'Invalid password'),
-})
-type Schema = z.output<typeof schema>
-
 const { fetch } = useUserSession()
 const toast = useToast()
 const logging = ref(false)
-const state = reactive<Partial<Schema>>({
+const state = reactive<Partial<LoginSchema>>({
   email: undefined,
   password: undefined,
 })
 
 const isFormValid = computed(() => state.email && state.password)
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
   if (logging.value || !isFormValid.value) {
     return
   }
@@ -46,7 +40,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 <template>
   <UCard class="self-center">
     <UForm
-      :schema="schema"
+      :schema="loginSchema"
       :state="state"
       class="space-y-4 w-60"
       @submit="onSubmit"

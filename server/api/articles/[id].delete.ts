@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   await requireUser(event)
 
   const { id } = await getValidatedRouterParams(event, z.object({
-    id: z.string(),
+    id: z.string().min(1),
   }).parse)
 
   await useDB()
