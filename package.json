@@ -8,8 +8,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "prisma:generate": "prisma generate && eslint types/db.ts --fix",
-    "prisma": "prisma",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "vue-tsc --noEmit && nuxi typecheck",
@@ -20,18 +18,15 @@
     "@nuxt/fonts": "^0.10.2",
     "@nuxt/image": "^1.8.1",
     "@nuxt/ui": "3.0.0-alpha.9",
-    "kysely": "^0.27.4",
+    "@prisma/client": "^5.22.0",
     "nuxt": "^3.14.1592",
     "nuxt-auth-utils": "^0.5.5",
-    "pg": "^8.13.1",
     "prisma": "^5.22.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.7.0",
-    "@types/pg": "^8.11.10",
     "eslint": "^9.15.0",
-    "prisma-kysely": "^1.8.0",
     "typescript": "^5.6.3",
     "vue-tsc": "^2.1.10"
   }

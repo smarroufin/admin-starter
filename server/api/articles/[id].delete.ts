@@ -8,9 +8,8 @@ export default defineEventHandler(async (event) => {
   }).parse)
 
   await useDB()
-    .deleteFrom('articles')
-    .where('id', '=', id)
-    .execute()
+    .article
+    .delete({ where: { id } })
 
   return setResponseStatus(event, 204)
 })

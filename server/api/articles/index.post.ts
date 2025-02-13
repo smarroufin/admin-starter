@@ -5,11 +5,14 @@ export default defineEventHandler(async (event) => {
 
   const { author, title, content, image } = await readValidatedBody(event, articlePostSchema.parse)
 
-  const article = await useDB()
-    .insertInto('articles')
-    .values({ author, title, content, image })
-    .returningAll()
-    .executeTakeFirst()
-
-  return article
+  return await useDB()
+    .article
+    .create({
+      data: {
+        author,
+        title,
+        content,
+        image,
+      },
+    })
 })

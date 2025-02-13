@@ -4,10 +4,18 @@ export default eventHandler(async (event) => {
   const { email, password } = await readValidatedBody(event, loginSchema.parse)
 
   const user = await useDB()
-    .selectFrom('_admin_users')
-    .select(['id', 'email', 'hash', 'enabled'])
-    .where('email', '=', email)
-    .executeTakeFirst()
+    .adminUser
+    .findFirst({
+      where: {
+        email,
+      },
+      select: {
+        id: true,
+        email: true,
+        hash: true,
+        enabled: true,
+      },
+    })
   if (!user) {
     throw error(403, 'Invalid credentials')
   }

@@ -6,10 +6,18 @@ export default eventHandler(async (event) => {
   const hash = await hashPassword(password)
 
   const user = await useDB()
-    .insertInto('_admin_users')
-    .values({ email, hash })
-    .returning(['id', 'email', 'enabled'])
-    .executeTakeFirst()
+    .adminUser
+    .create({
+      data: {
+        email,
+        hash,
+      },
+      select: {
+        id: true,
+        email: true,
+        enabled: true,
+      },
+    })
     .catch((e) => {
       if (e.code === PG_ERRORS.UNIQUE_VIOLATION) {
         throw error(400, 'Email already registered')

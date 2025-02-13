@@ -1,8 +1,6 @@
-generator kysely {
-  provider        = "prisma-kysely"
+generator client {
+  provider        = "prisma-client-js"
   previewFeatures = ["prismaSchemaFolder"]
-  output          = "../../types/"
-  fileName        = "db.ts"
 }
 
 datasource db {

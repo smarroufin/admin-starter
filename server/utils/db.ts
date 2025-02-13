@@ -1,27 +1,15 @@
-import { Kysely, PostgresDialect } from 'kysely'
-import pg from 'pg'
-import type { DB } from '~~/types/db.ts'
+import { PrismaClient } from '@prisma/client'
 
-let _db: Kysely<DB> | undefined
+let _client: PrismaClient | undefined
 
 export function useDB() {
-  if (_db) {
-    return _db
+  if (_client) {
+    return _client
   }
 
-  const dialect = new PostgresDialect({
-    pool: new pg.Pool({
-      host: process.env.DATABASE_HOST,
-      database: process.env.DATABASE_DB,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      port: Number(process.env.DATABASE_PORT),
-      max: 3,
-    }),
-  })
-  _db = new Kysely<DB>({ dialect })
+  _client = new PrismaClient()
 
-  return _db
+  return _client
 }
 
 export const PG_ERRORS = {

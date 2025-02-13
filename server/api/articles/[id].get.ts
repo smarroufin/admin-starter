@@ -6,8 +6,6 @@ export default defineEventHandler(async (event) => {
   }).parse)
 
   return await useDB()
-    .selectFrom('articles')
-    .selectAll()
-    .where('id', '=', id)
-    .executeTakeFirst()
+    .article
+    .findUnique({ where: { id } })
 })

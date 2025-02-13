@@ -1,6 +1,5 @@
-export default defineEventHandler(() => {
-  return useDB()
-    .selectFrom('articles')
-    .selectAll()
-    .execute()
+export default defineEventHandler(async () => {
+  return await useDB()
+    .article
+    .findMany()
 })
