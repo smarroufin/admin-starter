@@ -1,6 +1,14 @@
 export default defineNuxtConfig({
-  srcDir: 'app',
-  serverDir: 'server',
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@nuxt/fonts',
+    '@nuxt/image',
+    'nuxt-auth-utils',
+  ],
+  devtools: {
+    enabled: true,
+  },
   app: {
     head: {
       htmlAttrs: {
@@ -16,28 +24,20 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/main.css'],
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/ui',
-    '@nuxt/fonts',
-    '@nuxt/image',
-    'nuxt-auth-utils',
-  ],
-  future: {
-    compatibilityVersion: 4,
+  colorMode: {
+    preference: 'dark',
   },
-  compatibilityDate: '2024-11-01',
   ui: {
     theme: {
       colors: ['primary', 'white', 'black', 'success', 'error'],
     },
   },
-  devtools: {
-    enabled: true,
+  srcDir: 'app',
+  serverDir: 'server',
+  future: {
+    compatibilityVersion: 4,
   },
-  colorMode: {
-    preference: 'dark',
-  },
+  compatibilityDate: '2024-11-01',
   eslint: {
     config: {
       stylistic: true,
