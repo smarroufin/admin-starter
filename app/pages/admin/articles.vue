@@ -132,7 +132,6 @@ async function deleteArticle(id: string) {
             :disabled="deleting || !isFormValid"
             color="neutral"
             label="Post"
-            class="cursor-pointer"
           />
         </div>
       </UForm>
@@ -149,7 +148,7 @@ async function deleteArticle(id: string) {
         :loading="deleting"
         :disabled="posting"
         color="error"
-        class="absolute top-2 right-2 cursor-pointer"
+        class="absolute top-2 right-2"
         @click="deleteArticle(article.id)"
       />
     </div>

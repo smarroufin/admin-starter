@@ -39,7 +39,6 @@ const items = computed<DropdownMenuItem[]>(() => [
           :items="items"
           :content="{ align: 'end' }"
           :popper="{ placement: 'bottom-end' }"
-          :ui="{ item: 'cursor-pointer' }"
         >
           <button class="cursor-pointer">
             <UAvatar :alt="user.email.toUpperCase()" />
