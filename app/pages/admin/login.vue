@@ -38,42 +38,50 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
 </script>
 
 <template>
-  <UCard class="self-center">
-    <UForm
-      :schema="loginSchema"
-      :state="state"
-      class="space-y-4 w-60"
-      @submit="onSubmit"
-    >
-      <UFormField
-        label="Email"
-        name="email"
+  <div class="flex justify-center">
+    <UCard>
+      <UForm
+        :schema="loginSchema"
+        :state="state"
+        class="space-y-4 w-60"
+        @submit="onSubmit"
       >
-        <UInput
-          v-model="state.email"
-          type="email"
-          class="w-full"
-        />
-      </UFormField>
-      <UFormField
-        label="Password"
-        name="password"
-      >
-        <UInput
-          v-model="state.password"
-          type="password"
-          class="w-full"
-        />
-      </UFormField>
-      <div class="flex items-center justify-end">
+        <UFormField
+          label="Email"
+          name="email"
+        >
+          <UInput
+            v-model="state.email"
+            type="email"
+            class="w-full"
+          />
+        </UFormField>
+        <UFormField
+          label="Password"
+          name="password"
+        >
+          <UInput
+            v-model="state.password"
+            type="password"
+            class="w-full"
+          />
+        </UFormField>
+        <div class="flex justify-end">
+          <UButton
+            type="submit"
+            :loading="logging"
+            :disabled="!isFormValid"
+            color="neutral"
+            label="Login"
+          />
+        </div>
         <UButton
-          type="submit"
-          :loading="logging"
-          :disabled="!isFormValid"
-          color="neutral"
-          label="Login"
+          label="I don't have an account"
+          to="/admin/register"
+          variant="link"
+          class="p-0"
         />
-      </div>
-    </UForm>
-  </UCard>
+      </UForm>
+    </UCard>
+  </div>
 </template>

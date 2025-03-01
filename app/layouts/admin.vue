@@ -1,70 +1,50 @@
 <script setup lang="ts">
-import type { DropdownMenuItem } from '@nuxt/ui'
-
-const { clear, user } = useUserSession()
-
-async function logout() {
-  await clear()
-  navigateTo(ADMIN_LOGIN_URL)
-}
-
-const items = computed<DropdownMenuItem[]>(() => [
-  {
-    type: 'label' as const,
-    label: user.value?.email ?? '',
-  },
-  {
-    type: 'separator' as const,
-  },
-  {
-    type: 'link' as const,
-    label: 'Logout',
-    icon: 'i-lucide-log-out',
-    onSelect: logout,
-  },
-])
+const { user } = useUserSession()
 </script>
 
 <template>
-  <div class="flex flex-col min-h-[100vh]">
-    <AppHeader>
-      <nav class="flex items-center justify-between">
+  <div class="flex flex-col h-[100vh]">
+    <header class="flex-shrink-0 flex items-center gap-2 h-16 border-b border-neutral-800 px-4 sm:px-6">
+      <USlideover
+        v-if="user"
+        side="left"
+        title="Admin"
+        description="Admin navigation slideover"
+        class="md:hidden"
+        :ui="{
+          description: 'sr-only',
+          content: 'max-w-sm',
+        }"
+      >
         <UButton
-          variant="link"
-          to="/admin"
-          label="Admin"
+          icon="i-lucide-menu"
+          color="neutral"
+          variant="ghost"
+          class="-ml-2"
         />
-        <UDropdownMenu
-          v-if="user"
-          :items="items"
-          :content="{ align: 'end' }"
-          :popper="{ placement: 'bottom-end' }"
-        >
-          <button class="cursor-pointer">
-            <UAvatar :alt="user.email.toUpperCase()" />
-          </button>
-        </UDropdownMenu>
-        <div
-          v-else
-          class="flex items-center gap-x-4"
-        >
-          <UButton
-            variant="link"
-            to="/admin/login"
-            label="Login"
-          />
-          <UButton
-            variant="link"
-            to="/admin/register"
-            label="Register"
-          />
-        </div>
-      </nav>
-    </AppHeader>
-    <main class="flex flex-col items-center min-h-[calc(100vh-48px)]">
-      <UContainer class="w-full py-4 flex-1 flex flex-col">
+        <template #body>
+          <AdminNavigation class="h-full" />
+        </template>
+      </USlideover>
+
+      <UButton
+        label="Admin"
+        to="/admin"
+        size="xl"
+        color="neutral"
+        variant="link"
+      />
+    </header>
+
+    <div class="flex h-[calc(100vh-64px)] overflow-y-hidden">
+      <AdminNavigation
+        v-if="user"
+        class="flex-shrink-0 hidden md:flex max-w-3xs border-r border-neutral-800"
+      />
+
+      <main class="flex-1 min-h-[calc(100vh-64px)] h-full p-4 overflow-y-auto">
         <slot />
-      </UContainer>
-    </main>
+      </main>
+    </div>
   </div>
 </template>
