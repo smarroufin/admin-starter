@@ -5,7 +5,7 @@ const { data: article } = useFetch(`/api/articles/${id}`, {
   key: `article-${id}`,
   lazy: true,
   default: () => {
-    return cachedArticles.value?.find(article => article.id === id)
+    return cachedArticles.value?.find(article => article.id === id) ?? null
   },
 })
 </script>
