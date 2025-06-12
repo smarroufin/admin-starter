@@ -74,7 +74,7 @@ async function onSubmit(event: FormSubmitEvent<RegisterSchema>) {
             type="submit"
             :loading="registering"
             :disabled="!isFormValid"
-            color="neutral"
+            color="primary"
             label="Register"
           />
         </div>

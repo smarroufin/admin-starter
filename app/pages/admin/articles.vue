@@ -130,7 +130,7 @@ async function deleteArticle(id: string) {
             type="submit"
             :loading="posting"
             :disabled="deleting || !isFormValid"
-            color="neutral"
+            color="primary"
             label="Post"
           />
         </div>

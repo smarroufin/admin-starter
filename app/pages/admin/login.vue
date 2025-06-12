@@ -71,7 +71,7 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
             type="submit"
             :loading="logging"
             :disabled="!isFormValid"
-            color="neutral"
+            color="primary"
             label="Login"
           />
         </div>

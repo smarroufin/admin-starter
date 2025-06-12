@@ -1,4 +1,4 @@
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @import "@nuxt/ui";
 
 @theme static {
@@ -8,13 +8,9 @@
 }
 
 :root {
-  --ui-text: var(--color-black);
   --ui-bg: var(--color-neutral-50);
-
-  --ui-radius: var(--radius-sm);
 }
 
 .dark {
-  --ui-text: var(--color-white);
   --ui-bg: var(--color-neutral-950);
 }
