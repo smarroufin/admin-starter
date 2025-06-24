@@ -1,12 +1,7 @@
-const PUBLIC_PATHS = [
-  '/admin/login',
-  '/admin/register',
-]
-
 export default defineNuxtRouteMiddleware(async (to) => {
-  if (to.path === '/admin' || to.path.startsWith('/admin/')) {
+  if (to.path === ADMIN_HOME_URL || to.path.startsWith(`${ADMIN_HOME_URL}/`)) {
     const { session } = useUserSession()
-    if (PUBLIC_PATHS.includes(to.path)) {
+    if (ADMIN_PUBLIC_URLS.includes(to.path)) {
       if (session.value?.user) {
         return navigateTo(ADMIN_HOME_URL, { replace: true })
       }
