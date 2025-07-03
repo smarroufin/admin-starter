@@ -5,7 +5,7 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center p-4">
     <span>Admin Dashboard</span>
   </div>
 </template>

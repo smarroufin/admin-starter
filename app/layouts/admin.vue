@@ -36,7 +36,7 @@ const { user } = useUserSession()
         class="flex-shrink-0 hidden md:flex max-w-3xs border-r border-neutral-800"
       />
 
-      <main class="flex-1 min-h-[calc(100vh-64px)] h-full p-4 overflow-y-auto">
+      <main class="flex-1 min-h-[calc(100vh-64px)] h-full overflow-y-auto">
         <slot />
       </main>
     </div>

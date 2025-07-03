@@ -38,7 +38,7 @@ async function onSubmit(event: FormSubmitEvent<LoginSchema>) {
 </script>
 
 <template>
-  <div class="flex justify-center">
+  <div class="flex justify-center p-4">
     <UCard>
       <UForm
         :schema="loginSchema"

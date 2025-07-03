@@ -6,7 +6,11 @@ definePageMeta({
   layout: 'admin',
 })
 
-const { data: articles, refresh } = useFetch('/api/articles', { lazy: true, default: () => [] })
+const { data: articles, refresh } = useFetch('/api/articles', {
+  key: 'articles',
+  lazy: true,
+  default: () => [],
+})
 const toast = useToast()
 const posting = ref(false)
 const deleting = ref(false)
@@ -74,7 +78,7 @@ async function deleteArticle(id: string) {
 </script>
 
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
     <UCard>
       <UForm
         :schema="articlePostSchema"
