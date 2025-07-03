@@ -5,12 +5,14 @@ export default eventHandler(async (event) => {
 
   const hash = await hashPassword(password)
 
+  const usersCount = await useDB().adminUser.count()
   const user = await useDB()
     .adminUser
     .create({
       data: {
         email,
         hash,
+        enabled: usersCount === 0, // Enable first
       },
       select: {
         id: true,
