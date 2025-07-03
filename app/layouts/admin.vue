@@ -27,13 +27,7 @@ const { user } = useUserSession()
         </template>
       </USlideover>
 
-      <UButton
-        label="Admin"
-        to="/admin"
-        size="xl"
-        color="neutral"
-        variant="link"
-      />
+      <span class="font-semibold">Admin</span>
     </header>
 
     <div class="flex h-[calc(100vh-64px)] overflow-y-hidden">

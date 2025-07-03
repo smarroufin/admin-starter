@@ -11,6 +11,12 @@ async function logout() {
 const topItems = ref<NavigationMenuItem[][]>([
   [
     {
+      label: 'Home',
+      to: '/admin',
+      icon: 'i-lucide-home',
+      exact: true,
+    },
+    {
       label: 'Collections',
       icon: 'i-lucide-library',
       defaultOpen: true,
