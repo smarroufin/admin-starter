@@ -7,4 +7,9 @@ export const articlePostSchema = z.object({
   image: z.string().regex(/https?:\/\/.+/, 'Invalid image url'),
 })
 
+export const articleBulkDeleteSchema = z.object({
+  ids: z.array(z.string()).min(1, 'Invalid ids'),
+})
+
 export type ArticlePostSchema = z.output<typeof articlePostSchema>
+export type ArticleBulkDeleteSchema = z.output<typeof articleBulkDeleteSchema>

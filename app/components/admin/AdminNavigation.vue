@@ -25,6 +25,10 @@ const topItems = ref<NavigationMenuItem[][]>([
           label: 'Articles',
           to: '/admin/articles',
         },
+        {
+          label: 'AdminUsers',
+          to: '/admin/admin-users',
+        },
       ],
     },
     {

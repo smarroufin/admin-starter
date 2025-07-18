@@ -12,9 +12,26 @@ const { data: articles } = useFetch('/api/articles', {
       v-for="article in articles"
       :key="article.id"
     >
-      <NuxtLink :to="`/${article.id}`">
-        <ArticleCard :article="article" />
-      </NuxtLink>
+      <UCard
+        :ui="{ root: 'overflow-hidden', body: 'p-0 sm:p-0' }"
+        class="w-full"
+      >
+        <img
+          :src="article.image"
+          class="w-full aspect-video object-cover"
+        >
+        <div class="flex flex-col justify-start p-4">
+          <h2 class="text-xl font-light line-clamp-1">
+            {{ article.title }}
+          </h2>
+          <p class="mt-2 line-clamp-1">
+            {{ article.content }}
+          </p>
+          <span class="self-end text-sm text-neutral-500 dark:text-neutral-400 mt-4 line-clamp-1">
+            {{ article.author }}
+          </span>
+        </div>
+      </UCard>
     </li>
   </ul>
 </template>
