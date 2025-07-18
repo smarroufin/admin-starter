@@ -7,14 +7,6 @@ A starter template for building a full-stack Nuxt app with an integrated admin p
 This humble project is a minimalist yet functional implementation of a blog and an admin panel.
 It is a work-in-progress side-project with no particular ambition.
 
-## Roadmap
-
-- [x] Blog frontend
-- [x] Admin frontend
-- [x] Authentication
-- [ ] Convert admin to a reusable Nuxt layer
-- [ ] User management
-
 ## Tech Stack
 
 - [Nuxt](https://nuxt.com): A powerful full-stack framework for building modern web apps.
