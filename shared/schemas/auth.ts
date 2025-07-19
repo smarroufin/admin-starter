@@ -1,4 +1,5 @@
 import z from 'zod'
+import { PASSWORD_REGEX } from '../utils/auth'
 
 export const loginSchema = z.object({
   email: z.string().email('Invalid email'),

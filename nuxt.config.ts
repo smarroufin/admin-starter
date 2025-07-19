@@ -31,12 +31,7 @@ export default defineNuxtConfig({
       colors: ['primary', 'white', 'black', 'success', 'error'],
     },
   },
-  srcDir: 'app',
-  serverDir: 'server',
-  future: {
-    compatibilityVersion: 4,
-  },
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-07-19',
   eslint: {
     config: {
       stylistic: true,
